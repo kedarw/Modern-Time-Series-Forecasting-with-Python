@@ -150,7 +150,7 @@ class FeatureConfig:
         feature_list = list(set(feature_list))
         delete_index_cols = list(set(self.index_cols) - set(self.feature_list))
         (X, y, y_orig) = (
-            df.loc[:, set(feature_list + self.index_cols)]
+            df.loc[:, list(feature_list + self.index_cols)]
             .set_index(self.index_cols, drop=False)
             .drop(columns=delete_index_cols),
             df.loc[:, [self.target] + self.index_cols].set_index(
